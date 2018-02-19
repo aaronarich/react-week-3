@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 const Header = props => (
-  <div>
-    <p>Featured Mix</p>
-    <h1>Mix Name</h1>
-    {/* Play button */}
-  </div>
+  <header>
+    <h1>Marmalade.fm</h1>
+    <ul>
+      <li>What's hot</li>
+      <li>Archive</li>
+      <li>About</li>
+    </ul>
+  </header>
 );
 
 export default Header;
