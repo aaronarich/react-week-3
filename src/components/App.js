@@ -1,3 +1,4 @@
+/*global Mixcloud*/
 import React, { Component } from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -10,6 +11,15 @@ const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
 class App extends Component {
+  mountAudio = async () => {
+    const widget = Mixcloud.PlayerWidget(this.player);
+    await widget.ready;
+  };
+
+  componentDidMount() {
+    this.mountAudio();
+  }
+
   render() {
     return (
       <Router>
@@ -31,6 +41,7 @@ class App extends Component {
             src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2FGold_Flake_Paint%2Fgfp-mix-january-2018%2F"
             frameBorder="0"
             className="z-5 db fixed bottom-0"
+            ref={player => (this.player = player)}
           />
         </div>
       </Router>
