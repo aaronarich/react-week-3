@@ -8,7 +8,7 @@ class App extends Component {
       <div>
         <div className="flex-l justify-end">
           <FeaturedMix />
-          <div>
+          <div className="w-50-l relative z-1">
             <Header />
             {/* Routed page */}
           </div>
