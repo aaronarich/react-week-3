@@ -12,13 +12,17 @@ const About = () => <h1>About</h1>;
 
 class App extends Component {
   mountAudio = async () => {
-    const widget = Mixcloud.PlayerWidget(this.player);
-    await widget.ready;
+    this.widget = Mixcloud.PlayerWidget(this.player);
+    await this.widget.ready;
   };
 
   componentDidMount() {
     this.mountAudio();
   }
+
+  togglePlay = () => {
+    this.widget.togglePlay();
+  };
 
   render() {
     return (
@@ -28,6 +32,11 @@ class App extends Component {
             <FeaturedMix />
             <div className="w-50-l relative z-1">
               <Header />
+
+              <div>
+                <button onClick={this.togglePlay}>Play / Pause</button>
+              </div>
+
               {/* Routed page */}
               <Route exact path="/" component={Home} />
               <Route path="/archive" component={Archive} />
