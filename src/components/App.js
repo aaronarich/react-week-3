@@ -11,9 +11,29 @@ const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+      currentMid: ""
+    };
+  }
+
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
     await this.widget.ready;
+
+    this.widget.events.pause.on(() =>
+      this.setState({
+        playing: false
+      })
+    );
+
+    this.widget.events.play.on(() =>
+      this.setState({
+        playing: true
+      })
+    );
   };
 
   componentDidMount() {
@@ -38,7 +58,9 @@ class App extends Component {
               <Header />
 
               <div>
-                <button onClick={this.togglePlay}>Play / Pause</button>
+                <button onClick={this.togglePlay}>
+                  {this.state.playing ? "Pause" : "Play"}
+                </button>
               </div>
 
               <div>
