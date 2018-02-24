@@ -24,6 +24,10 @@ class App extends Component {
     this.widget.togglePlay();
   };
 
+  playMix = mixName => {
+    this.widget.load(mixName, true);
+  };
+
   render() {
     return (
       <Router>
@@ -35,6 +39,18 @@ class App extends Component {
 
               <div>
                 <button onClick={this.togglePlay}>Play / Pause</button>
+              </div>
+
+              <div>
+                <button
+                  onClick={() =>
+                    this.playMix(
+                      "/Gold_Flake_Paint/sunday-slowdown-episode-eighteen/"
+                    )
+                  }
+                >
+                  Play Mix
+                </button>
               </div>
 
               {/* Routed page */}
