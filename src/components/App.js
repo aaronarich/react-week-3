@@ -40,16 +40,18 @@ class App extends Component {
     this.mountAudio();
   }
 
-  togglePlay = () => {
-    this.widget.togglePlay();
-  };
+  actions = {
+    togglePlay: () => {
+      this.widget.togglePlay();
+    };
 
-  playMix = mixName => {
-    this.setState({
-      currentMix: mixName
-    });
-    this.widget.load(mixName, true);
-  };
+    playMix: mixName => {
+      this.setState({
+        currentMix: mixName
+      });
+      this.widget.load(mixName, true);
+    };
+  }
 
   render() {
     return (
