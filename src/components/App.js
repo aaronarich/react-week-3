@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       playing: false,
-      currentMid: ""
+      currentMix: ""
     };
   }
 
@@ -45,6 +45,9 @@ class App extends Component {
   };
 
   playMix = mixName => {
+    this.setState({
+      currentMix: mixName
+    });
     this.widget.load(mixName, true);
   };
 
@@ -57,6 +60,8 @@ class App extends Component {
             <div className="w-50-l relative z-1">
               <Header />
 
+              <h1>Currently Playing: {this.state.currentMix}</h1>
+
               <div>
                 <button onClick={this.togglePlay}>
                   {this.state.playing ? "Pause" : "Play"}
@@ -68,6 +73,16 @@ class App extends Component {
                   onClick={() =>
                     this.playMix(
                       "/Gold_Flake_Paint/sunday-slowdown-episode-eighteen/"
+                    )
+                  }
+                >
+                  Play Mix
+                </button>
+
+                <button
+                  onClick={() =>
+                    this.playMix(
+                      "/Gold_Flake_Paint/sunday-slowdown-episode-nineteen/"
                     )
                   }
                 >
