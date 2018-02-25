@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
+import Home from "./Home";
 
-const Home = () => <h1>Home</h1>;
 const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
@@ -59,36 +59,6 @@ class App extends Component {
             <FeaturedMix />
             <div className="w-50-l relative z-1">
               <Header />
-
-              <h1>Currently Playing: {this.state.currentMix}</h1>
-
-              <div>
-                <button onClick={this.togglePlay}>
-                  {this.state.playing ? "Pause" : "Play"}
-                </button>
-              </div>
-
-              <div>
-                <button
-                  onClick={() =>
-                    this.playMix(
-                      "/Gold_Flake_Paint/sunday-slowdown-episode-eighteen/"
-                    )
-                  }
-                >
-                  Play Mix
-                </button>
-
-                <button
-                  onClick={() =>
-                    this.playMix(
-                      "/Gold_Flake_Paint/sunday-slowdown-episode-nineteen/"
-                    )
-                  }
-                >
-                  Play Mix
-                </button>
-              </div>
 
               {/* Routed page */}
               <Route exact path="/" component={Home} />
