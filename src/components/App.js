@@ -43,15 +43,14 @@ class App extends Component {
   actions = {
     togglePlay: () => {
       this.widget.togglePlay();
-    };
-
+    },
     playMix: mixName => {
       this.setState({
         currentMix: mixName
       });
       this.widget.load(mixName, true);
-    };
-  }
+    }
+  };
 
   render() {
     return (
