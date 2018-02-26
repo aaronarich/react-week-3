@@ -45,6 +45,11 @@ class App extends Component {
       this.widget.togglePlay();
     },
     playMix: mixName => {
+      const { currentMix } = this.state;
+      if (mixName === currentMix) {
+        return this.widget.togglePlay();
+      }
+
       this.setState({
         currentMix: mixName
       });
