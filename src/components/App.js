@@ -15,9 +15,23 @@ class App extends Component {
     super(props);
     this.state = {
       playing: false,
-      currentMix: ""
+      currentMix: "",
+      mix: null
     };
   }
+
+  fetchMixes = async () => {
+    try {
+      const response = await fetch(
+        "https://api.mixcloud.com/Gold_Flake_Paint/sunday-slowdown-episode-seventeen/"
+      );
+      const data = await response.json();
+      this.setState({
+        mix: data
+      });
+      console.log(data);
+    } catch (error) {}
+  };
 
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
@@ -38,6 +52,7 @@ class App extends Component {
 
   componentDidMount() {
     this.mountAudio();
+    this.fetchMixes();
   }
 
   actions = {
