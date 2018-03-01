@@ -12,7 +12,6 @@ const Mix = ({ name, pictures, ...props }) => (
         <div className="flex items-center relative z-2">
           <h1 className="f4 f3-l mv0 white ttu biryani pr2 lh-title">{name}</h1>
           <PlayButton />
-          {/* PlayButton goes here */}
         </div>
       </div>
     </PlayMix>
