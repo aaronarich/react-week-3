@@ -26,7 +26,6 @@ class App extends Component {
 
   fetchMixes = async () => {
     const { mixIds } = this.state;
-    console.log(mixIds);
 
     mixIds.map(async id => {
       try {
