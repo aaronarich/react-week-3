@@ -7,6 +7,8 @@ import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
 import Home from "./Home";
 
+import mixesData from "../data/mixes";
+
 const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
@@ -16,21 +18,27 @@ class App extends Component {
     this.state = {
       playing: false,
       currentMix: "",
-      mix: null
+      mixIds: mixesData,
+      mix: null,
+      mixes: []
     };
   }
 
   fetchMixes = async () => {
-    try {
-      const response = await fetch(
-        "https://api.mixcloud.com/Gold_Flake_Paint/sunday-slowdown-episode-seventeen/"
-      );
-      const data = await response.json();
-      this.setState({
-        mix: data
-      });
-      console.log(data);
-    } catch (error) {}
+    const { mixIds } = this.state;
+    console.log(mixIds);
+
+    mixIds.map(async id => {
+      try {
+        const response = await fetch(`https://api.mixcloud.com${id}`);
+        const data = await response.json();
+        this.setState((prevState, props) => ({
+          mixes: [...prevState.mixes, data]
+        }));
+      } catch (error) {
+        console.log(error);
+      }
+    });
   };
 
   mountAudio = async () => {
