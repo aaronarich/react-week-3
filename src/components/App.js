@@ -86,7 +86,12 @@ class App extends Component {
       <Router>
         <div>
           <div className="flex-l justify-end">
-            <FeaturedMix {...this.state} {...this.actions} {...firstMix} />
+            <FeaturedMix
+              {...this.state}
+              {...this.actions}
+              {...firstMix}
+              id={firstMix.key}
+            />
             <div className="w-50-l relative z-1">
               <Header />
 
