@@ -7,10 +7,9 @@ import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
 import Home from "./Home";
 import Archive from "./Archive";
+import About from "./About";
 
 import mixesData from "../data/mixes";
-
-const About = () => <h1>About</h1>;
 
 class App extends Component {
   constructor(props) {
@@ -105,7 +104,10 @@ class App extends Component {
                 path="/archive"
                 render={() => <Archive {...this.state} {...this.actions} />}
               />
-              <Route path="/about" component={About} />
+              <Route
+                path="/about"
+                render={() => <About {...this.state} {...this.actions} />}
+              />
             </div>
           </div>
           <iframe
