@@ -12,7 +12,7 @@ const Stat = ({ statName, statNumber, statWord }) => (
   </div>
 );
 
-const About = props => (
+const About = ({ mixes }) => (
   <div className="ph3 ph4-l">
     <div className="measure center lh-copy biryani f4">
       <p className="mt0">
@@ -27,9 +27,27 @@ const About = props => (
     </div>
 
     <div className="flex pt3">
-      <Stat statName="Featuring..." statNumber="10" statWord="mixes" />
-      <Stat statName="Played..." statNumber="12345" statWord="times" />
-      <Stat statName="Contains..." statNumber="54321" statWord="seconds" />
+      <Stat
+        statName="Featuring..."
+        statNumber={mixes.length}
+        statWord="mixes"
+      />
+      <Stat
+        statName="Played..."
+        statNumber={mixes.reduce(
+          (accumulator, current) => accumulator + current.play_count,
+          0
+        )}
+        statWord="times"
+      />
+      <Stat
+        statName="Contains..."
+        statNumber={mixes.reduce(
+          (accumulator, current) => accumulator + current.audio_length,
+          0
+        )}
+        statWord="seconds"
+      />
     </div>
   </div>
 );
