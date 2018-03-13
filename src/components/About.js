@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "./Counter";
 
 const Stat = ({ statName, statNumber, statWord }) => (
   <div
@@ -7,7 +8,8 @@ const Stat = ({ statName, statNumber, statWord }) => (
   >
     <div className="f6 ttu biryani">{statName}</div>
     <div className="f5 b ttu biryani-black tracked">
-      {statNumber} {statWord}
+      <Counter end={statNumber} />
+      {statWord}
     </div>
   </div>
 );
