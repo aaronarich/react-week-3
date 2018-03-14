@@ -2,33 +2,28 @@ import React from "react";
 import Counter from "./Counter";
 
 const Stat = ({ statName, statNumber, statWord }) => (
-  <div
-    className="w-third tc pa3 ba bw2 b--light-gray"
-    style={{ marginRight: -2 }}
-  >
-    <div className="f6 ttu biryani">{statName}</div>
-    <div className="f5 b ttu biryani-black tracked">
-      <Counter end={statNumber} />
-      {statWord}
-    </div>
+  <div className="mb4">
+    <div className="f5 black mb0 b">{statName}</div>
+    <Counter end={statNumber} />
+    <div className="f4 lh-1">{statWord}</div>
   </div>
 );
 
 const About = ({ mixes }) => (
-  <div className="ph3 ph4-l">
-    <div className="measure center lh-copy biryani f4">
-      <p className="mt0">
+  <div className="measure center">
+    <div className="lh-copy">
+      <p className="mb4">
         Marmalade.fm features the latest and greatest in grooves, beats and
         world music.
       </p>
 
-      <p>
+      <p className="mb4">
         Whether you’re into hip hop, trip hop, classic jazz, fusion jazz, afro
         beat or break beat… we have you covered!
       </p>
     </div>
 
-    <div className="flex pt3">
+    <div>
       <Stat
         statName="Featuring..."
         statNumber={mixes.length}
