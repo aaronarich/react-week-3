@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import Stat from "./Stat";
 
 class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mix: null
+      mix: {}
     };
   }
 
@@ -19,10 +20,26 @@ class Show extends Component {
 
   render() {
     const { match } = this.props;
+    const { mix } = this.state;
     return (
-      <div>
-        <h1>Show Page</h1>
-        <p>{match.params.slug}</p>
+      <div className="ph3 ph4-l pad-bottom">
+        <div className="measure center lh-copy">
+          <p>{mix.description}</p>
+
+          <Stat statName="Plays" statNumber={mix.play_count} statWord="times" />
+
+          <Stat
+            statName="Created"
+            statNumber={mix.created_time}
+            statWord="days ago"
+          />
+
+          <Stat
+            statName="Duration"
+            statNumber={mix.audio_length / 60}
+            statWord="minutes"
+          />
+        </div>
       </div>
     );
   }
